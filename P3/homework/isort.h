@@ -11,8 +11,6 @@
 
 typedef uint32_t data_t;
 
-void mem_alloc(data_t** space, int size);
-void mem_free(data_t** space);
 void isort(data_t* begin, data_t* end);
 
 #endif  // UTIL_H
