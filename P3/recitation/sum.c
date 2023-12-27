@@ -1,19 +1,22 @@
-// Copyright (c) 2012 MIT License by 6.172 Staff
-
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
 
 typedef uint32_t data_t;
-const int U = 10000000;   // size of the array. 10 million vals ~= 40MB
-const int N = 100000000;  // number of searches to perform
 
-int main() {
+int main(int argc, char *argv[]) {
+  if (argc != 3) {
+    printf("Usage: %s U N\n", argv[0]);
+    return -1;
+  }
+
+  const int U = atoi(argv[1]);   // size of the array
+  const int N = atoi(argv[2]);   // number of searches to perform
+
   data_t* data = (data_t*) malloc(U * sizeof(data_t));
   if (data == NULL) {
-    free(data);
     printf("Error: not enough memory\n");
-    exit(-1);
+    return -1;
   }
 
   // fill up the array with sequential (sorted) values.
